@@ -45,7 +45,8 @@ def setup_code_server():
             "title": "VSCode Web IDE",
             "path_info": "vscode",
             "icon_path": os.path.join(_HERE, 'icons/vscode.svg')
-            }
+            },
+        "default_url": "vscode/?folder={home_dir}"  # Set default workspace folder
         }
 
     # if code-server is already running and listening to TCP port
@@ -88,5 +89,9 @@ def setup_code_server():
         "command": full_command,
         "unix_socket": socket_file_name
         })
+
+    home_dir = os.environ.get('HOME', '/home/jovyan')
+    proxy_config_dict['default_url'] = proxy_config_dict['default_url'].format(home_dir=home_dir)
+
 
     return proxy_config_dict
