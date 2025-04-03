@@ -68,9 +68,7 @@ def setup_code_server():
             })
         return proxy_config_dict
 
-    working_directory = os.environ.get('CODE_WORKING_DIRECTORY', None)
-    if not working_directory:
-        working_directory = os.environ.get('JUPYTERHUB_ROOT_DIR', os.environ.get('JUPYTER_SERVER_ROOT', os.environ.get('HOME')))
+    working_directory = os.environ.get('CODE_WORKING_DIRECTORY', os.environ.get('HOME'))
 
     additional_arguments = []
 
