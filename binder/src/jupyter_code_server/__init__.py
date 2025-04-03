@@ -70,6 +70,11 @@ def setup_code_server():
         return proxy_config_dict
 
     working_directory = os.environ.get('CODE_WORKING_DIRECTORY', os.environ.get('HOME'))
+    working_directory = '/home/jovyan'
+
+    home_dir = os.environ.get('HOME', '/home/jovyan')
+    home_dir = '/home/jovyan'
+    proxy_config_dict['default_url'] = proxy_config_dict['default_url'].format(home_dir=home_dir)
 
     additional_arguments = []
 
@@ -89,9 +94,6 @@ def setup_code_server():
         "command": full_command,
         "unix_socket": socket_file_name
         })
-
-    home_dir = os.environ.get('HOME', '/home/jovyan')
-    proxy_config_dict['default_url'] = proxy_config_dict['default_url'].format(home_dir=home_dir)
 
 
     return proxy_config_dict
