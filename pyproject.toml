@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["binder/src"]
 
 [project.entry-points."jupyter_serverproxy_servers"]
 vscode = "jupyter_code_server:setup_code_server"
